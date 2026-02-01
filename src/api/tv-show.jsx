@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FAKE_POPULARS } from './FAKE_DATA';
+import { FAKE_POPULARS, FAKE_RECOMMENDATIONS } from './FAKE_DATA';
 import {BASE_URL,API_KEY_PARAM} from '../config';
 
 export class TVShowAPI{
@@ -11,4 +11,13 @@ export class TVShowAPI{
         //return response.data.results;
         return FAKE_POPULARS;
     }
+
+    static async fetchRecommendations(tvShowId){
+        // perform request
+        // return the response
+                //const response = await axios.get(`${BASE_URL}tv/${tvShowId}/recommendations${API_KEY_PARAM}`);
+                //console.log(response.data.results)
+                //return response.data.results;
+                return FAKE_RECOMMENDATIONS;
+            }
 }
