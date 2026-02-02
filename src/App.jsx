@@ -8,6 +8,7 @@ import logoImg from "./assets/Images/logo.png";
 import { Logo } from './components/Logo/Logo';
 import { TVShowListItem } from './components/TVShowListItem/TVShowListItem';
 import { TVShowList } from './components/TVShowList/TVShowList';
+import { SearchBar } from './components/SearchBar/SearchBar';
 
 export function App(){
     const [currentTVShow, setCurrentTVShow] = useState();
@@ -42,7 +43,9 @@ export function App(){
 
     console.log(recommendationList);
 
-   
+   function updateCurrentTVShow(tvShow){
+        setCurrentTVShow(tvShow);
+   }
 
     return (
     <div className={s.main_container}
@@ -53,7 +56,7 @@ export function App(){
                     <Logo img={logoImg} title="BingeWatch" subtitle="Find shows you like"/>
                 </div>
                 <div className='col-md-12 col-lg-4'>
-                    <input style={{width:'100%'}} type='text'/>
+                    <SearchBar/>
                 </div>
 
             </div>
@@ -62,7 +65,7 @@ export function App(){
         { currentTVShow && <TVShowDetail tvShow={currentTVShow}/>} 
         </div>
         <div className={s.recommended_tv_shows}>
-        { currentTVShow && <TVShowList TVShowList={recommendationList} />}
+        { currentTVShow && <TVShowList onClickItem={updateCurrentTVShow} TVShowList={recommendationList} />}
         </div>
     </div>
     );
