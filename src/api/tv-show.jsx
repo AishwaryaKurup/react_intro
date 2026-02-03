@@ -6,18 +6,25 @@ export class TVShowAPI{
     static async fetchPopulars(){
 // perform request
 // return the response
-        //const response = await axios.get(`${BASE_URL}tv/popular${API_KEY_PARAM}`);
-        //console.log(response.data.results)
-        //return response.data.results;
-        return FAKE_POPULARS;
+        const response = await axios.get(`${BASE_URL}tv/popular${API_KEY_PARAM}`);
+        console.log(response.data.results)
+        return response.data.results;
+        //return FAKE_POPULARS;
     }
 
     static async fetchRecommendations(tvShowId){
         // perform request
         // return the response
-                //const response = await axios.get(`${BASE_URL}tv/${tvShowId}/recommendations${API_KEY_PARAM}`);
-                //console.log(response.data.results)
-                //return response.data.results;
-                return FAKE_RECOMMENDATIONS;
+                const response = await axios.get(`${BASE_URL}tv/${tvShowId}/recommendations${API_KEY_PARAM}`);
+                console.log(response.data.results)
+                return response.data.results;
+                //return FAKE_RECOMMENDATIONS;
+            }
+
+    static async fetchByTitle(title){
+        // perform request
+        // return the response
+                const response = await axios.get(`${BASE_URL}search/tv${API_KEY_PARAM}&query=${title}`);
+                return response.data.results;
             }
 }

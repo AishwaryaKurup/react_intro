@@ -47,6 +47,13 @@ export function App(){
         setCurrentTVShow(tvShow);
    }
 
+   async function fetchByTtile(title){
+    const searchResponse = await TVShowAPI.fetchByTitle(title);
+        if (searchResponse.length > 0){
+            setCurrentTVShow(searchResponse[0]);
+        }
+    }
+
     return (
     <div className={s.main_container}
     style={{background: currentTVShow ? `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url("${BACKDROP_BASE_URL}${currentTVShow.backdrop_path}") no-repeat center / cover`: 'black'}}>
@@ -56,7 +63,7 @@ export function App(){
                     <Logo img={logoImg} title="BingeWatch" subtitle="Find shows you like"/>
                 </div>
                 <div className='col-md-12 col-lg-4'>
-                    <SearchBar/>
+                    <SearchBar onSubmit = {fetchByTtile}/>
                 </div>
 
             </div>
